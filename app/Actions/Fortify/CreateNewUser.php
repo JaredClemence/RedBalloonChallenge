@@ -28,17 +28,17 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'name' => ['required', 'string', 'max:255'],
+            //'username' => ['required', 'string', 'max:255', 'unique:users'],
+            //'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
+            //'password' => $this->passwordRules(),
         ])->validate();
         
         $userData = [
-            'username' => $input['username'],
-            'name' => $input['name'],
+            //'username' => $input['username'],
+            //'name' => $input['name'],
             'email' => $input['email'],
-            'password' => Hash::make($input['password']),
+            //'password' => Hash::make($input['password']),
             'referred_by'=> $this->referrerService->getReferrerId()
         ];
 
