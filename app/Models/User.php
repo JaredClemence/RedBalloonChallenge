@@ -28,6 +28,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'referred_by'
     ];
 
     /**
@@ -59,4 +60,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    public function referrer(){
+        return $this->belongsTo('App\Models\User', 'referred_by')->withDefault();
+    }
 }

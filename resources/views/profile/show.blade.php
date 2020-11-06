@@ -7,6 +7,18 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <div class="flex">
+                <div class="flex-1 mx-auto px-6 py-6 my-3 text-center">
+                    Your Referral Link:<br/>(Copy this and share this with friends)<br/><br/>
+                    <!--This code needs to be moved to the controller-->
+                    @php
+                    $user = Illuminate\Support\Facades\Auth::user();
+                    $referral_link = route('affiliate_link',['username'=>$user->username]);
+                    @endphp
+                    <!-- end evil code section -->
+                    <strong>{{$referral_link}}</strong>
+                </div>
+            </div>
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
                 @livewire('profile.update-profile-information-form')
 
