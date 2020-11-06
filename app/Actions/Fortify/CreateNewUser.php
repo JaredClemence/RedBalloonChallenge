@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use App\Http\Controllers\Service\ReferrerService;
+use Illuminate\Support\Facades\Auth;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -43,5 +44,27 @@ class CreateNewUser implements CreatesNewUsers
         ];
 
         return User::create($userData);
+    }
+    public function createUsername(array $input, $user){
+        Validator::make($input, [
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+        ])->validate();
+        
+        $user->username = $input['username'];
+        if( $user->name == null ) $user->name = $input['username'];
+        $user->save();
+        
+        return $user;
+    }
+    
+    public function createPassword(array $input, $user){
+        Validator::make($input, [
+            'password' => $this->passwordRules(),
+        ])->validate();
+        
+        $user->password = Hash::make($input['password']);
+        $user->save();
+        
+        return $user;
     }
 }

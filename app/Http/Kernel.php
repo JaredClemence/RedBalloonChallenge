@@ -29,6 +29,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewareGroups = [
+        'registered' => [
+            \App\Http\Middleware\Username::class,
+            \App\Http\Middleware\Password::class,
+        ],
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,

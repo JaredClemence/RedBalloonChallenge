@@ -14,15 +14,22 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/affiliate/{username}', [\App\Http\Controllers\Controller::class, 'redirectReferredUser'])->name('affiliate_link');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware([ 'verified', 'registered', 'auth:sanctum'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('/', function () {
+        return view('welcome');
+    });
+    
+Route::get('/affiliate/{username}', [\App\Http\Controllers\Controller::class, 'redirectReferredUser'])->name('affiliate_link');
+Route::get('/register/username', function(){
+    return view('auth.set-username');
+})->name('registration.username');
+Route::post('/register/username', [App\Http\Controllers\RegistrationAssistController::class, 'createUsername']);
+Route::get('/register/password', function(Request $request){
+    return view('auth.set-password');
+})->name('registration.password');
+Route::post('/register/password', [App\Http\Controllers\RegistrationAssistController::class, 'createPassword']);
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -30,8 +37,7 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-
-    return redirect('/home');
+    return redirect()->route('registration.username');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
