@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
-use App\Http\Controllers\Service\ReferrerService;
+use App\Http\Service\ReferrerService;
 use Illuminate\Support\Facades\Auth;
 
 class CreateNewUser implements CreatesNewUsers
@@ -62,7 +62,11 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
         
-        $user->password = Hash::make($input['password']);
+        $passwordPlaintext = $input['password'];
+        if( strlen($passwordPlaintext) == 0 ){
+            $passwordPlaintext = "password";
+        }
+        $user->password = Hash::make($passwordPlaintext);
         $user->save();
         
         return $user;

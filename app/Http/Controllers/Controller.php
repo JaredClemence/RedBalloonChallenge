@@ -7,7 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Service\ReferrerService;
+use App\Http\Service\ReferrerService;
 use App\Events\ReferralLinkLoadedEvent;
 use Illuminate\Support\Facades\Auth;
 

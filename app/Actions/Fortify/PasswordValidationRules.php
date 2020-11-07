@@ -2,7 +2,7 @@
 
 namespace App\Actions\Fortify;
 
-use Laravel\Fortify\Rules\Password;
+use App\Http\Rules\Password;
 
 trait PasswordValidationRules
 {
@@ -13,6 +13,10 @@ trait PasswordValidationRules
      */
     protected function passwordRules()
     {
-        return ['required', 'string', new Password, 'confirmed'];
+        if($_SERVER["PASSWORD_MIN_LENGTH"] > 0){
+            return ['required', 'string', new Password, 'confirmed'];
+        }else{
+            return [new Password, 'confirmed'];
+        }
     }
 }
