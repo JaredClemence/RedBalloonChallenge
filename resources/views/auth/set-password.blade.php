@@ -4,6 +4,9 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
+        
+        <h3>Step 3 of 3</h3>
+            
         <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('registration.password') }}">
