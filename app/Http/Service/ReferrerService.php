@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class ReferrerService
 {
+    public function getAffiliateLink(User $user){
+        return route('affiliate_link',['username'=>$user->username]);
+    }
+    
     public function rememberReferrer($username){
         $user = null;
         if( $username != null ){

@@ -21,6 +21,8 @@ Route::get('/', function () {
         return view('welcome');
     });
     
+Route::get('/games/{game}', [\App\Http\Controllers\GameController::class,'show']);
+    
 Route::get('/affiliate/{username}', [\App\Http\Controllers\Controller::class, 'redirectReferredUser'])->name('affiliate_link');
 Route::get('/register/username', function(){
     return view('auth.set-username');
