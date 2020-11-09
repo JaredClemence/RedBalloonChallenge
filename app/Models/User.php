@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\GameRegistration;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -59,4 +60,12 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    public function registrations(){
+        $this->hasMany(GameRegistration::class);
+    }
+    
+    public function children(){
+        $this->hasMany(GameRegistration::class, 'referred_by');
+    }
 }

@@ -7,9 +7,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
+use App\Models\Game;
 
 class ReferrerService
 {
+    private $game;
+    
     public function getAffiliateLink(User $user){
         return route('affiliate_link',['username'=>$user->username]);
     }
@@ -38,6 +41,14 @@ class ReferrerService
             Log::info("A referrer link provided a bad username. '$username' does not currently exist within this system.");
         }
         return $user;
+    }
+
+    public function setActiveGame(Game $game) {
+        $this->game = $game;
+    }
+
+    public function registerUserForGame(Request $request) {
+        
     }
 
 }

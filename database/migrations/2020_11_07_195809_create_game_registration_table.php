@@ -21,6 +21,7 @@ class CreateGameRegistrationTable extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('referred_by');
             $table->boolean('opted_in_emails');
+            $table->unique(['game_id','user_id']);
         });
     }
 

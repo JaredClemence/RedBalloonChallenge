@@ -47,3 +47,10 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('status', 'verification-link-sent');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::prefix('/{game}')->group( function(){
+    Route::get('/affiliate/{username}',[App\Http\Controllers\GameRegistrationController::class,'referredUser'])->name('game.referrer');
+    Route::get('/',[App\Http\Controllers\GameRegistrationController::class,'show'])->name('game.detail');
+    Route::get('/register',[App\Http\Controllers\GameRegistrationController::class,'showRegistrationForm'])->name('game.register');
+    Route::post('/register',[App\Http\Controllers\GameRegistrationController::class,'create']);
+} );
