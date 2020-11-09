@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Models\Game;
 
 /**
  * @property bool $opted_in_emails
@@ -10,6 +11,13 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  */
 class GameRegistration extends Pivot
 {
+    protected $fillable = [
+        'game_id',
+        'user_id',
+        'referred_by',
+        'opted_in_emails'
+    ];
+    
     /**
      * @return bool
      */
@@ -21,5 +29,17 @@ class GameRegistration extends Pivot
     }
     public function opt_out(){
         $this->opted_in_emails = false;
+    }
+    
+    public function game(){
+        return $this->hasOne(Game::class, 'id','game_id');
+    }
+    
+    public function user(){
+        return $this->hasOne(User::class, 'id','user_id');
+    }
+    
+    public function referredBy(){
+        return $this->hasOne(User::class, 'id','referred_by')->withDefault();
     }
 }

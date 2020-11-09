@@ -18,6 +18,7 @@ class CreateGamesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->string('shortname')->comment("This name is used for the referral URL.");
             $table->text('description');
             $table->text('win_condition');
             $table->text('prize_description');

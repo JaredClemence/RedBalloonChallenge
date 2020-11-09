@@ -19,6 +19,7 @@ class CreateGameRegistrationTable extends Migration
             $table->timestamps();
             $table->integer('game_id');
             $table->bigInteger('user_id');
+            $table->bigInteger('referred_by');
             $table->boolean('opted_in_emails');
         });
     }

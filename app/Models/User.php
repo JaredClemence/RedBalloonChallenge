@@ -27,8 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'name',
         'email',
-        'password',
-        'referred_by'
+        'password'
     ];
 
     /**
@@ -60,8 +59,4 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
-    
-    public function referrer(){
-        return $this->belongsTo('App\Models\User', 'referred_by')->withDefault();
-    }
 }
