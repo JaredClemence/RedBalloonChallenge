@@ -13,6 +13,6 @@ class MiniGameSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }

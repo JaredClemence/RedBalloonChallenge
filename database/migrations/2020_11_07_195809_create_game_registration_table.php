@@ -19,8 +19,11 @@ class CreateGameRegistrationTable extends Migration
             $table->timestamps();
             $table->integer('game_id');
             $table->bigInteger('user_id');
-            $table->bigInteger('referred_by');
-            $table->boolean('opted_in_emails');
+            $table->bigInteger('referred_by')->nullable();
+            $table->boolean('opted_in_emails')->default(true);
+            $table->text('affiliate_name')->nullable();
+            $table->integer('node_value')->default(0);
+            $table->integer('tree_depth')->default(0);
             $table->unique(['game_id','user_id']);
         });
     }

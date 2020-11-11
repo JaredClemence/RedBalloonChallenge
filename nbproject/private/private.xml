@@ -3,27 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/two-factor-challenge.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/register.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/set-username.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/profile/delete-user-form.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/layouts/guest.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/navigation-dropdown.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/login.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Http/Controllers/GameController.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Models/User.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/set-password.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/dashboard.blade.php</file>
             <file>file:/Users/jaredclemence/git/RedBalloonChallenge/routes/web.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/reset-password.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/layouts/app.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/profile/logout-other-browser-sessions-form.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Models/Game.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/layouts/bootstrap.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/verify-email.blade.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/auth/forgot-password.blade.php</file>
+            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Http/Controllers/Controller.php</file>
+            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/database/migrations/2014_10_12_000000_create_users_table.php</file>
             <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Http/Service/ReferrerService.php</file>
-            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/resources/views/games/show.blade.php</file>
+            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Http/Controllers/RegistrationAssistController.php</file>
+            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/database/migrations/2020_11_07_195809_create_game_registration_table.php</file>
+            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Http/Controllers/GameRegistrationController.php</file>
+            <file>file:/Users/jaredclemence/git/RedBalloonChallenge/app/Models/User.php</file>
         </group>
     </open-files>
 </project-private>

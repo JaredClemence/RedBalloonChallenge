@@ -28,6 +28,32 @@ class Game extends Model
 {
     use HasFactory;
     
+    protected $fillable=[
+        'name',
+        'shortname',
+        'total_prizes',
+        'game_goal',
+        'payout_terms',
+        'prize_description',
+        'motivation'
+    ];
+    
+    public function register( User $account, GameRegistration $referrer = null ){
+        $data = [
+            'user_id'=>$account->id,
+            'game_id'=>$this->id
+        ];
+        $registration = GameRegistration::where($data)->first();
+        if( $registration ) return;
+        
+        $data['affiliate_name']=$account->username;
+        if( $referrer ){
+            $data['tree_depth']=$referrer->tree_depth+1;
+            $data['referred_by']=$referrer->id;
+        }
+        GameRegistration::create( $data );
+    }
+    
     public function miniGames(){
         return $this->hasMany( MiniGame::class );
     }

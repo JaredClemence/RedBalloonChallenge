@@ -17,7 +17,7 @@ class ReferrerService
         return route('affiliate_link',['username'=>$user->username]);
     }
     
-    public function rememberReferrer($username){
+    public function rememberReferrer(User $user){
         $user = null;
         if( $username != null ){
             $user = $this->loadUserByUsername($username);

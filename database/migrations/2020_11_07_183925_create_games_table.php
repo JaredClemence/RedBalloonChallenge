@@ -19,10 +19,11 @@ class CreateGamesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('shortname')->comment("This name is used for the referral URL.");
-            $table->text('description');
-            $table->text('win_condition');
+            $table->integer('total_prizes');
+            $table->text('game_goal');
+            $table->text('payout_terms');
             $table->text('prize_description');
-            $table->text('designed_goal');
+            $table->text('motivation');
             $table->dateTime('begin')->nullable();
             $table->dateTime('end')->nullable();
             $table->integer('min_duration_hours')->default(-1);

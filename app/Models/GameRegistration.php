@@ -7,7 +7,8 @@ use App\Models\Game;
 
 /**
  * @property bool $opted_in_emails
- * 
+ * @property int $node_value
+ * @property int $tree_depth
  */
 class GameRegistration extends Pivot
 {
@@ -30,7 +31,6 @@ class GameRegistration extends Pivot
     public function opt_out(){
         $this->opted_in_emails = false;
     }
-    
     public function game(){
         return $this->hasOne(Game::class, 'id','game_id');
     }
@@ -40,6 +40,6 @@ class GameRegistration extends Pivot
     }
     
     public function referredBy(){
-        return $this->hasOne(User::class, 'id','referred_by')->withDefault();
+        return $this->hasOne(GameRegistration::class, 'id','referred_by')->withDefault();
     }
 }

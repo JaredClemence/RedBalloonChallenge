@@ -16,7 +16,6 @@ class GameRegistrationController extends Controller
     
     public function __construct(ReferrerService $service) {
         $this->service = $service;
-        $service->setActiveGame( $game );
     }
     public function create(CreateNewUser $request, Game $game){
         $this->service->registerUserForGame($request);
@@ -28,9 +27,10 @@ class GameRegistrationController extends Controller
         return view()->first([$viewName,'games.registration'], compact('game'));
     }
     public function show(Game $game){
+        $this->service->setActiveGame( $game  );
         $name = $game->shortname;
         $viewName = "games.{$name}.details";
-        return view()->first([$viewName,'games.registration'], compact('game'));
+        return view()->first([$viewName,'games.details'], compact('game'));
     }
     public function referredUser(Game $game, $username){
         $this->service->rememberReferrer($username);
