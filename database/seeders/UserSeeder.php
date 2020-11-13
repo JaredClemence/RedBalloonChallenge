@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             'name'=>'jaredclemence',
             'username'=>'jaredclemence',
             'email'=>'jaredclemence@gmail.com',
-            'password'=>Hash::make('password')
+            'password'=>Hash::make('password'),
+            'email_verified_at'=>now()
         ]);
     }
 }
