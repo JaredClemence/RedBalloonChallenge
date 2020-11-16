@@ -17,11 +17,10 @@ use Illuminate\Http\Request;
 Route::middleware([ 'verified', 'registered', 'auth:sanctum'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-Route::get('/', function () {
-        return view('welcome');
-    });
-    
-Route::get('/games/{game}', [\App\Http\Controllers\GameController::class,'show']);
+
+Route::get('/', [\App\Http\Controllers\Controller::class,'showDefaultPage']);
+Route::get('/games/{game}', [\App\Http\Controllers\GameController::class,'show'])->name('game.show');
+Route::get('/games/create', [\App\Http\Controllers\GameController::class,'create'])->name('game.create');
     
 Route::get('/affiliate/{username}', [\App\Http\Controllers\Controller::class, 'redirectReferredUser'])->name('affiliate_link');
 Route::get('/register/username', function(){

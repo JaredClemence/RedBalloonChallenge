@@ -10,10 +10,28 @@ use Illuminate\Http\Request;
 use App\Http\Service\ReferrerService;
 use App\Events\ReferralLinkLoadedEvent;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Routers\ConditionalRouteRedirect;
+use App\Http\Routers\FirstGameRedirect;
+use App\Http\Routers\NoGameRedirect;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
+    public function showDefaultPage(Request $request){
+        $redirects = [
+            NoGameRedirect::class,
+            FirstGameRedirect::class
+        ];
+        foreach( $redirects as $conditionalRedirectClass ){
+            $conditionalRedirect = app($conditionalRedirectClass);
+            /* @var $conditionalRedirect ConditionalRouteRedirect */ 
+            $conditionalRedirect->read($request);
+            if( $conditionalRedirect->conditionMet() ){
+                return $conditionalRedirect->redirect();
+            }
+        }
+    }
     
     //Note: named endpoints will override path endpoints
     // 
