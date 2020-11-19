@@ -54,7 +54,11 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        $referrerLink = $this->service->getAffiliateLink(Auth::user());
+        $referrerLink = null;
+        $user = Auth::user();
+        if( $user ){
+            $referrerLink = $this->service->getAffiliateLink($user);
+        }
         return view('games.show',compact('game','referrerLink'));
     }
 

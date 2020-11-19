@@ -27,7 +27,7 @@ class Controller extends BaseController
             $conditionalRedirect = app($conditionalRedirectClass);
             /* @var $conditionalRedirect ConditionalRouteRedirect */ 
             $conditionalRedirect->read($request);
-            if( $conditionalRedirect->conditionMet() ){
+            if( $conditionalRedirect->test() == true ){
                 return $conditionalRedirect->redirect();
             }
         }

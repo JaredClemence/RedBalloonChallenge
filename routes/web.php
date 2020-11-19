@@ -19,7 +19,7 @@ Route::middleware([ 'verified', 'registered', 'auth:sanctum'])->get('/dashboard'
 })->name('dashboard');
 
 Route::get('/', [\App\Http\Controllers\Controller::class,'showDefaultPage']);
-Route::get('/games/{game}', [\App\Http\Controllers\GameController::class,'show'])->name('game.show');
+Route::get('/games/{game:shortname}', [\App\Http\Controllers\GameController::class,'show'])->name('game.show');
 Route::get('/games/create', [\App\Http\Controllers\GameController::class,'create'])->name('game.create');
     
 Route::get('/affiliate/{username}', [\App\Http\Controllers\Controller::class, 'redirectReferredUser'])->name('affiliate_link');

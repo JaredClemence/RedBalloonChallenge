@@ -15,10 +15,11 @@ use App\Models\GameRegistration;
  *  
  * @property string $name
  * @property string $shortname
- * @property string $description
- * @property string $win_condition
+ * @property integer $total_prizes
+ * @property string $game_gaol
+ * @property string $payout_terms
  * @property string $prize_description
- * @property string $designed_goal
+ * @property string $motivation
  * @property Carbon|null $begin
  * @property Carbon|null $end
  * @property int|-1 $min_duration_hours
